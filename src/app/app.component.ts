@@ -8,9 +8,4 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'recipes-app';
   category = 'recipe';
-
-  onNavigate(category:string){
-    this.category = category;
-  }
-
 }
