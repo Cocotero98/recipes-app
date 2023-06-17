@@ -12,26 +12,14 @@ export class RecipeService {
     recipesChanged = new Subject<Recipe[]>();
     recipeSelected!: Recipe;
     
-    private recipes: Recipe[]= [
-        new Recipe(
-          'Spaghetti', 
-          'I am testing the Recipe model', 
-          'https://images.pexels.com/photos/6287520/pexels-photo-6287520.jpeg',
-          [
-            new Ingredient('Pasta',1),
-            new Ingredient('Sauce', 1)
-          ]),
-        new Recipe(
-          'Spaghetti 2', 
-          'I am testing the Recipe model', 
-          'https://images.pexels.com/photos/6287520/pexels-photo-6287520.jpeg',
-          [
-            new Ingredient('Ravioli',1),
-            new Ingredient('Sauce', 1)
-          ])
-      ];
+    private recipes: Recipe[]= [];
 
       constructor(private SLService: ShoppingListService){}
+
+      setRecipes(recipes: Recipe[]){
+        this.recipes = recipes;
+        this.recipesChanged.next(this.recipes.slice())
+      }
 
       getRecipes(){
         return this.recipes.slice();
